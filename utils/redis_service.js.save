@@ -1,0 +1,34 @@
+
+const Redis = require('ioredis');
+
+module.exports = {
+  getClient: () => {
+    const client = new Redis({
+      host: "127.0.0.1",
+      port: "6379",
+  //    password: "Na99OTx1VdB2GVYobksVqjVK3cpvI5Yz",
+    });
+
+    client.on('ready', () => {
+      console.log('redis is ready ✅');
+    });
+
+    client.on('connect', () => {
+      console.log('redis connection established ✅');
+    });
+
+    client.on('reconnecting', () => {
+      console.log('redis reconnecting ⏳');
+    });
+
+    client.on('error', (error) => {
+      console.log('redis error occured 🚩', error);
+    });
+
+    client.on('end', () => {
+      console.logr('redis connection ended 💔');
+    });
+
+    return client;
+  },
+};
