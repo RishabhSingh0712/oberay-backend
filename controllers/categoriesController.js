@@ -19,6 +19,7 @@ module.exports.addCategory = async (req, res, next) => {
     .status(200)
     .json({ data: AddCategory, message: "CategorySchema Data added Successfully" });
 };
+
 module.exports.addSubCategory = async (req, res, next) => {
 	var AddSubCategorySchema ={}
   let full_data = {
@@ -49,20 +50,19 @@ module.exports.getproductBySubCategoryID = async (req, res, next) => {
     .json({ data: AddCategorySchema, message: "SubCategorySchema Data added Successfully" });
 };
 
-
 module.exports.getCategory = async (req, res, next) => {
   const AddCategorySchema = await  CategorySchema.find();
   res
     .status(200)
     .json({ data: AddCategorySchema, message: "SubCategorySchema Data added Successfully" });
 };
+
 module.exports.getSubCategory = async (req, res, next) => {
   const AddCategorySchema = await  SubCategorySchema.find();
   res
     .status(200)
     .json({ data: AddCategorySchema, message: "SubCategorySchema Data added Successfully" });
 };
-
 
 module.exports.getCategoryByID = async (req, res, next) => {
 	const getCategoryList = await CategorySchema.findOne({
@@ -79,6 +79,7 @@ module.exports.getCategoryByID = async (req, res, next) => {
 		});
 	}
 };
+
 module.exports.getSubCategoryByID = async (req, res, next) => {
 	const getCategoryList = await SubCategorySchema.findOne({
 		_id: req.params.id,
@@ -94,6 +95,7 @@ module.exports.getSubCategoryByID = async (req, res, next) => {
 		});
 	}
 };
+
 module.exports.deleteCategory = async (req, res, next) => {
 	const getCategoryList = await CategorySchema.findOneAndDelete({
 		_id: req.params.id,
@@ -109,6 +111,7 @@ module.exports.deleteCategory = async (req, res, next) => {
 		});
 	}
 };
+
 module.exports.deleteSubCategory = async (req, res, next) => {
 	const getCategoryList = await SubCategorySchema.findOneAndDelete({
 		_id: req.params.id,
@@ -124,7 +127,6 @@ module.exports.deleteSubCategory = async (req, res, next) => {
 		});
 	}
 };
-
 
 module.exports.updateCategory = async (req, res, next) => {
 	console.log(req.body);
