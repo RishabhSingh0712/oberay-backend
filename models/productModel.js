@@ -10,6 +10,7 @@ const ProductSchema = new Schema({
 	desc: String,
 	imgColor: Array,
 	rating: Number,
+	price : Number,
 	discount: Number,
 	UUID:String,
 	category: {
