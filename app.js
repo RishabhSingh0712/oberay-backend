@@ -10,6 +10,7 @@ const category = require("./routes/category");
 const cart = require("./routes/cart");
 const coupon = require("./routes/coupon");
 const common = require("./routes/common");
+const filter = require("./routes/filter")
 const cors = require("cors");
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,6 +30,7 @@ app.use("/category", category);
 app.use("/cart", cart);
 app.use("/common", common);
 app.use('/coupon',coupon);
+app.use('/filter', filter)
 app.listen(2000, () => {
   console.log("server is running on 2000 port");
 });
