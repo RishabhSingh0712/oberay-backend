@@ -5,7 +5,7 @@ const filterController = async (req, res) => {
         
         const { color, discount, rating, price, brand } = req.body || {};
 
-        // add filter parameters
+        // filter parameters
         const filter = {};
         if (color) filter.color = color;
         if (discount) filter.discount = discount;
