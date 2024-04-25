@@ -190,7 +190,7 @@ module.exports.addProductImages = async (req, res, next) => {
 	if (data?.img?.length) {
 		console.log('if', data['img']);
 		let newarr = [...data['img']];
-		for (let i = 0; i < req.files.image.length; i++) {
+		for (let i = 0; i < req.files.image; i++) {
 			images.push(
 				url+'/public/my-uploads/' + req.files.image[i].filename
 			);
