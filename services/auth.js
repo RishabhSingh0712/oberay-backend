@@ -20,7 +20,7 @@ const OTPModel = require("../models/otpModel");
 const { checkValidOTPMy } = require("../utils/otpUtils");
 const twilioClient = twilio(
   "AC598f286fc49113bd6f13fddb622c7879",
-  "9ea97d6ea59163b741346b709775ea1f"
+  "244468e12f046720a80c7221a1e867a9"
 );
 
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
