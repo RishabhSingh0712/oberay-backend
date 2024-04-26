@@ -3,15 +3,15 @@ const productModel = require("../models/productModel");
 const filterController = async (req, res) => {
     try {
         
-        const { color, discount, rating, price, brand } = req.body || {};
+        const { imgColor, discount, rating, price, productName } = req.body || {};
 
         // filter parameters
         const filter = {};
-        if (color) filter.color = color;
+        if (imgColor) filter.imgColor = imgColor;
         if (discount) filter.discount = discount;
         if (rating) filter.rating = rating;
         if (price) filter.price = price; 
-        if (brand) filter.brand = brand;
+        if (productName) filter.productName = productName;
 
         const products = await ProductTable.find(filter);
 
