@@ -8,7 +8,7 @@ module.exports.addCategory = async (req, res, next) => {
 //   console.log(req);
   var AddCategory={}
   let full_data = {
-		image: `${url}/public/my-uploads-single/` + req.file.filename,
+		image: `${url}/public/my-uploads-single/` + req.file,
 		...req.body,
 	};
 //   console.log(full_data,'fullll');
@@ -23,7 +23,7 @@ module.exports.addCategory = async (req, res, next) => {
 module.exports.addSubCategory = async (req, res, next) => {
 	var AddSubCategorySchema ={}
   let full_data = {
-	image: `${url}/public/my-uploads-single/` + req.file.filename,
+	image: `${url}/public/my-uploads-single/` + req.file,
 		...req.body, 
     
 	};
@@ -44,10 +44,20 @@ module.exports.getproductByCategoryID = async (req, res, next) => {
 };
 
 module.exports.getproductBySubCategoryID = async (req, res, next) => {
+
   const AddCategorySchema = await  productModel.find({"sub-category":req.params.id}).populate(["Category","SubCategory"]);
   res
     .status(200)
     .json({ data: AddCategorySchema, message: "SubCategorySchema Data added Successfully" });
+
+    try {
+        const AddCategorySchema = await productModel.ProductTable.find({ "subcategory": req.params.id })
+        res.status(200).json({ data: AddCategorySchema, message: "SubCategorySchema Data added Successfully" });
+    } catch (error) {
+		console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+
 };
 
 module.exports.getCategory = async (req, res, next) => {
@@ -80,13 +90,14 @@ module.exports.getCategoryByID = async (req, res, next) => {
 	}
 };
 
+
 module.exports.getSubCategoryByID = async (req, res, next) => {
-	const getCategoryList = await SubCategorySchema.findOne({
+	const getSubCategoryList = await SubCategorySchema.findOne({
 		_id: req.params.id,
 	});
-	if (getCategoryList) {
+	if (getSubCategoryList) {
 		res.status(200).json({
-			data: { data: getCategoryList },
+			data: { data: getSubCategoryList },
 			message: 'Sub Category get Successfully',
 		});
 	} else {
