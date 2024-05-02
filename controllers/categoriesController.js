@@ -45,7 +45,7 @@ module.exports.getproductByCategoryID = async (req, res, next) => {
 
 module.exports.getproductBySubCategoryID = async (req, res, next) => {
 
-  const AddCategorySchema = await  productModel.find({"sub-category":req.params.id}).populate(["Category","SubCategory"]);
+  const AddCategorySchema = await  productModel.ProductTable.find({"sub-category":req.params.id}).populate(["Category","SubCategory"]);
   res
     .status(200)
     .json({ data: AddCategorySchema, message: "SubCategorySchema Data added Successfully" });
@@ -75,29 +75,20 @@ module.exports.getSubCategory = async (req, res, next) => {
 };
 
 module.exports.getCategoryByID = async (req, res, next) => {
-    try {
-        const category = await CategorySchema.findOne({
-            _id: req.params.id,
-        });
-        
-        if (category) {
-            res.status(200).json({
-                data: category,
-                message: 'Category retrieved successfully',
-            });
-        } else {
-            res.status(404).json({
-                message: 'Category not found',
-            });
-        }
-    } catch (error) {
-        console.error('Error retrieving category:', error);
-        res.status(500).json({
-            message: 'Internal server error',
-        });
-    }
+	const getCategoryList = await CategorySchema.findOne({
+		_id: req.params.id,
+	});
+	if (getCategoryList) {
+		res.status(200).json({
+			data: { data: getCategoryList },
+			message: 'Category Get Successfully',
+		});
+	} else {
+		res.status(400).json({
+			message: 'Category ID not Found',
+		});
+	}
 };
-
 
 module.exports.getSubCategoryByID = async (req, res, next) => {
 	const getSubCategoryList = await SubCategorySchema.findOne({

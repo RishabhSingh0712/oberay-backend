@@ -1,5 +1,5 @@
 const CartModel = require("../models/cartModel");
-const WishListModel = require("../models/cartModel");
+const WishListModel = require("../models/wishlistModal");
 
 module.exports.addCart = async (req, res, next) => {
     const AddCart = await new CartModel(req.body).save();

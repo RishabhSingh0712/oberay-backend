@@ -15,12 +15,12 @@ const ProductSchema = new Schema({
 	UUID:String,
 	category: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Category',
+		ref: "Category",
 		required: true,
 	},
 	subCategory: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'SubCategory',
+		ref: "SubCategory",
 		required: false,
 	},
   productVarientsId: {
