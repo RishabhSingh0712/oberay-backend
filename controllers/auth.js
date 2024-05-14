@@ -100,7 +100,7 @@ class AuthController {
       res.status(200).json(otpResult);
     // }
   }
-  // ... other methods ...
+
 
   async forgotPassword(req, res) {
     const data = req.body;
@@ -140,8 +140,7 @@ class AuthController {
     }
     res.status(200).json({message:"User Not Exist!"});
 
-   
-    // res.status(200).json("dasdasd")
+  
   }
 
   async profile(req, res) {
