@@ -101,7 +101,6 @@ class AuthController {
     // }
   }
 
-
   async forgotPassword(req, res) {
     const data = req.body;
     const result = await AuthService.forgotPassword(data);
